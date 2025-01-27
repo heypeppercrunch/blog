@@ -9,7 +9,7 @@ function createPostCard(post) {
                 <span>📚 ${post.readTime}</span>
                 <span>🗓️ ${post.date}</span>
             </div>
-            <a href="/public/posts/${post.id}.html" class="read-more">Read more</a>
+            <a href="posts/${post.id}.html" class="read-more">Read more</a>
         </article>
     `;
 }
