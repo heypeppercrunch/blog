@@ -4,7 +4,8 @@
   "description": "This is my first GitHub project. I'm learning Git!",
   "main": "script.js",
   "scripts": {
-    "build:posts": "node scripts/build-posts.js"
+    "build:posts": "node scripts/build-posts.js",
+    "serve": "http-server . -p 4000"
   },
   "repository": {
     "type": "git",
@@ -17,6 +18,7 @@
   },
   "homepage": "https://github.com/heypeppercrunch/blog#readme",
   "dependencies": {
-    "marked": "^12.0.0"
+    "marked": "^12.0.0",
+    "http-server": "^14.1.1"
   }
 }

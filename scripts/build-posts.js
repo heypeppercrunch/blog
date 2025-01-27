@@ -21,9 +21,16 @@ async function buildPosts() {
         const markdown = path.join(postsDir, file);
         const html = await converter.convertMarkdownToHtml(markdown);
         
-        // Save as HTML file
+        // Save as HTML file in public/posts directory
         const outputFile = path.join(outputDir, file.replace('.md', '.html'));
         fs.writeFileSync(outputFile, html);
+        
+        // Also copy the HTML file to the root posts directory
+        const rootPostsDir = path.join(__dirname, '../posts');
+        if (!fs.existsSync(rootPostsDir)) {
+            fs.mkdirSync(rootPostsDir, { recursive: true });
+        }
+        fs.writeFileSync(path.join(rootPostsDir, file.replace('.md', '.html')), html);
         
         console.log(`Converted ${file} to HTML`);
     }
