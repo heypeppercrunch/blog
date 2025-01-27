@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Building in Web3 - Pepper's Blog</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/post.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap">
+</head>
+<body>
+    <div class="progress-container">
+        <div class="progress-bar"></div>
+    </div>
+
+    <nav class="navbar">
+        <div class="nav-brand">Pepper</div>
+        <div class="nav-links">
+            <a href="../index.html">Home</a>
+            <a href="../index.html#about">About</a>
+            <a href="../index.html#blog">Blog</a>
+        </div>
+    </nav>
+
+    <main class="container">
+        <article class="blog-post">
+            <div class="post-meta">
+                <h1>Building in Web3: 9 Key Areas for Crypto Product Management</h1>
+                <div class="post-subtitle">Practical Strategies for PMs: Bridging Traditional Product Management with Web3 Innovations</div>
+                <div class="post-meta-info">
+                    <span>📚 15 min read</span>
+                    <span>🗓️ March 19, 2024</span>
+                </div>
+            </div>
+
+            <div class="table-of-contents">
+                <h3>Contents</h3>
+                <ul class="toc-list">
+                    <li><a href="#intro">Introduction</a></li>
+                    <li><a href="#trust">1. Trust & Community</a></li>
+                    <li><a href="#engagement">2. Community Engagement</a></li>
+                    <li><a href="#practical">3. Practical Engagement</a></li>
+                    <li><a href="#investment">4. User Investment</a></li>
+                    <li><a href="#security">5. Security & Trust</a></li>
+                    <li><a href="#distribution">6. Distribution</a></li>
+                    <li><a href="#interoperability">7. Interoperability</a></li>
+                    <li><a href="#early-adopters">8. Early Adopters</a></li>
+                    <li><a href="#early-stage">9. Early Stage Market</a></li>
+                </ul>
+            </div>
+
+            <div class="blog-content">
+                <section id="intro">
+                    <p>After years of managing crypto products and nurturing vibrant communities, I've gained insights that can benefit fellow Product Managers in the Web3 space. Our role, while rooted in traditional product management principles, has expanded to encompass new dimensions unique to blockchain technology.</p>
+
+                    <p>For those of you who, like me, have transitioned from traditional tech or grown alongside the crypto industry, you'll recognize that the core of our work remains the same. We're still focused on creating value for users, solving problems, and driving product adoption. However, the Web3 context adds new layers to consider in our day-to-day work.</p>
+                </section>
+
+                <section id="trust">
+                    <h2>1. Trust and Community as Foundation</h2>
+                    <ul>
+                        <li><strong>Crypto products:</strong> Unlike traditional products, crypto products gain meaning and value only when a group of people collectively trust in their worth. It's this shared belief that forms the foundation of crypto products.</li>
+                        <li><strong>PM focus:</strong> Your job as a PM goes beyond just building features. Focus on building strong relationships with your user community. Work on making this group more solid, dense, and larger. Remember, in the crypto world, the strength of your community often determines the success of your product.</li>
+                    </ul>
+                </section>
+
+                <!-- ... other sections ... -->
+            </div>
+
+            <div class="social-share">
+                <a href="https://twitter.com/intent/tweet?text=Building in Web3: 9 Key Areas for Crypto Product Management&url=" class="share-button twitter">Share on Twitter</a>
+                <a href="https://www.linkedin.com/shareArticle?mini=true&url=" class="share-button linkedin">Share on LinkedIn</a>
+                <a href="https://www.facebook.com/sharer/sharer.php?u=" class="share-button facebook">Share on Facebook</a>
+            </div>
+        </article>
+    </main>
+
+    <div class="reading-position">0% read</div>
+
+    <footer>
+        <p>© 2024 Pepper. All rights reserved.</p>
+    </footer>
+
+    <script>
+        window.addEventListener('load', () => {
+            const toc = document.querySelectorAll('.toc-list a');
+            const sections = document.querySelectorAll('section');
+            const progressBar = document.querySelector('.progress-bar');
+            const readingPosition = document.querySelector('.reading-position');
+            
+            function updateReadingProgress() {
+                const windowHeight = window.innerHeight;
+                const documentHeight = document.documentElement.scrollHeight - windowHeight;
+                const scrolled = window.scrollY;
+                const percentageRead = Math.min(Math.max((scrolled / documentHeight) * 100, 0), 100);
+                
+                progressBar.style.width = `${percentageRead}%`;
+                readingPosition.textContent = `${Math.round(percentageRead)}% read`;
+                
+                if (percentageRead > 0 && percentageRead < 100) {
+                    readingPosition.classList.add('visible');
+                } else {
+                    readingPosition.classList.remove('visible');
+                }
+            }
+
+            function updateToc() {
+                let currentSection = '';
+                sections.forEach(section => {
+                    const sectionTop = section.offsetTop;
+                    if (window.scrollY >= (sectionTop - 150)) {
+                        currentSection = section.getAttribute('id');
+                    }
+                });
+
+                toc.forEach(item => {
+                    item.classList.remove('active');
+                    if (item.getAttribute('href') === `#${currentSection}`) {
+                        item.classList.add('active');
+                    }
+                });
+            }
+
+            window.addEventListener('scroll', () => {
+                updateReadingProgress();
+                updateToc();
+            });
+
+            updateReadingProgress();
+            updateToc();
+        });
+
+        document.querySelectorAll('.share-button').forEach(button => {
+            button.href = button.href + encodeURIComponent(window.location.href);
+        });
+    </script>
+</body>
+</html> 

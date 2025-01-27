@@ -1,0 +1,75 @@
+/* Dark theme variables */
+:root[data-theme="dark"] {
+  --background: #1a1a1a;
+  --primary: #e63946;
+  --secondary: #0077ff;
+  --text-primary: #ffffff;
+  --text-body: #cccccc;
+}
+
+/* Gradient background option */
+.gradient-bg {
+  background: linear-gradient(135deg, var(--primary), var(--secondary));
+}
+
+/* Blog title styling */
+.blog-title {
+  font-size: 2.5rem;
+  color: var(--text-primary);
+  text-align: center;
+  padding: 2rem 0;
+}
+
+/* Responsive hexagon grid */
+.hexagon-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+  padding: 2rem;
+}
+
+/* Hexagon card styling */
+.hexagon-card {
+  position: relative;
+  transition: transform 0.3s ease;
+}
+
+.hexagon-card:hover {
+  transform: scale(1.05);
+}
+
+.read-more-btn {
+  position: absolute;
+  bottom: 1rem;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 0.5rem 1rem;
+  background: var(--primary);
+  color: var(--text-primary);
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.hexagon-card:hover .read-more-btn {
+  opacity: 1;
+}
+
+/* Media queries for responsive design */
+@media (max-width: 1024px) {
+  .hexagon-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 640px) {
+  .hexagon-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .blog-title {
+    font-size: 2rem;
+  }
+} 
