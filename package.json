@@ -1,0 +1,22 @@
+{
+  "name": "myblog",
+  "version": "1.0.0",
+  "description": "This is my first GitHub project. I'm learning Git!",
+  "main": "script.js",
+  "scripts": {
+    "build:posts": "node scripts/build-posts.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/heypeppercrunch/blog.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/heypeppercrunch/blog/issues"
+  },
+  "homepage": "https://github.com/heypeppercrunch/blog#readme",
+  "dependencies": {
+    "marked": "^12.0.0"
+  }
+}

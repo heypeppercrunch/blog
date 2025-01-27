@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{title}} - Pepper's Blog</title>
+    <link rel="stylesheet" href="../../css/style.css">
+    <link rel="stylesheet" href="../../css/post.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap">
+</head>
+<body>
+    <div class="progress-container">
+        <div class="progress-bar"></div>
+    </div>
+
+    <nav class="navbar">
+        <div class="nav-brand">Pepper</div>
+        <div class="nav-links">
+            <a href="../../index.html">Home</a>
+            <a href="../../index.html#about">About</a>
+            <a href="../../index.html#blog">Blog</a>
+        </div>
+    </nav>
+
+    <main class="container">
+        <article class="blog-post">
+            <div class="post-meta">
+                <h1>{{title}}</h1>
+                <div class="post-meta-info">
+                    <span>📚 {{readTime}}</span>
+                    <span>🗓️ {{date}}</span>
+                </div>
+            </div>
+
+            <div class="blog-content">
+                {{content}}
+            </div>
+
+            <div class="social-share">
+                <a href="https://twitter.com/intent/tweet?text={{title}}&url=" class="share-button twitter">Share on Twitter</a>
+                <a href="https://www.linkedin.com/shareArticle?mini=true&url=" class="share-button linkedin">Share on LinkedIn</a>
+                <a href="https://www.facebook.com/sharer/sharer.php?u=" class="share-button facebook">Share on Facebook</a>
+            </div>
+        </article>
+    </main>
+
+    <div class="reading-position">0% read</div>
+
+    <footer>
+        <p>© 2024 Pepper. All rights reserved.</p>
+    </footer>
+
+    <script>
+        window.addEventListener('load', () => {
+            const progressBar = document.querySelector('.progress-bar');
+            const readingPosition = document.querySelector('.reading-position');
+            
+            function updateReadingProgress() {
+                const windowHeight = window.innerHeight;
+                const documentHeight = document.documentElement.scrollHeight - windowHeight;
+                const scrolled = window.scrollY;
+                const percentageRead = Math.min(Math.max((scrolled / documentHeight) * 100, 0), 100);
+                
+                progressBar.style.width = `${percentageRead}%`;
+                readingPosition.textContent = `${Math.round(percentageRead)}% read`;
+                
+                if (percentageRead > 0 && percentageRead < 100) {
+                    readingPosition.classList.add('visible');
+                } else {
+                    readingPosition.classList.remove('visible');
+                }
+            }
+
+            window.addEventListener('scroll', updateReadingProgress);
+            updateReadingProgress();
+        });
+
+        document.querySelectorAll('.share-button').forEach(button => {
+            button.href = button.href + encodeURIComponent(window.location.href);
+        });
+    </script>
+</body>
+</html> 
